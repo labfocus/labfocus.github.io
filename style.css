@@ -3,6 +3,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
@@ -391,6 +392,7 @@ a.submit-btn:hover {
   background-color: var(--bg);
   color: var(--text);
 }
+
 
 
 
