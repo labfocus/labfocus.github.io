@@ -1,3 +1,10 @@
+body {
+  background-image: url(study.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* ==== ROOT VARIABLES ==== */
@@ -384,5 +391,6 @@ a.submit-btn:hover {
   background-color: var(--bg);
   color: var(--text);
 }
+
 
 
