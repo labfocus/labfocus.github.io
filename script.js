@@ -41,18 +41,23 @@ window.addEventListener("click", () => {
   closeAllDropdowns();
 });
 
-// Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger-btn');
-    const navLinks = document.getElementById('nav-links');
+const hamburger = document.getElementById('hamburger-btn');
+const navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+// Dropdown toggle
+document.querySelectorAll('.dropbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const dropdown = btn.nextElementSibling;
+
+    // Close other dropdowns
+    document.querySelectorAll('.dropdown-content').forEach(dc => {
+      if (dc !== dropdown) dc.classList.remove('show');
     });
 
-    // Dropdown toggle
-    document.querySelectorAll('.dropbtn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const dropdown = btn.nextElementSibling;
-        dropdown.classList.toggle('show');
-      });
-    });
+    dropdown.classList.toggle('show');
+  });
+});
