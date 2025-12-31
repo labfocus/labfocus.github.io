@@ -14,34 +14,29 @@ themeBtn.addEventListener("click", () => {
   themeBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
-// 🔽 Select buttons and dropdowns
+// Dropdowns
 const taskBtn = document.getElementById("taskBtn");
 const taskDropdown = document.getElementById("taskDropdown");
 const gameBtn = document.getElementById("gameBtn");
 const gameDropdown = document.getElementById("gameDropdown");
 
-// Function to close all dropdowns
 function closeAllDropdowns(except = null) {
   if (except !== taskDropdown) taskDropdown.classList.remove("show");
   if (except !== gameDropdown) gameDropdown.classList.remove("show");
 }
 
-// TASK DROPDOWN
-taskBtn.addEventListener("click", (e) => {
+taskBtn.addEventListener("click", e => {
   e.stopPropagation();
   closeAllDropdowns(taskDropdown);
   taskDropdown.classList.toggle("show");
 });
 
-// GAME DROPDOWN
-gameBtn.addEventListener("click", (e) => {
+gameBtn.addEventListener("click", e => {
   e.stopPropagation();
   closeAllDropdowns(gameDropdown);
   gameDropdown.classList.toggle("show");
 });
 
-// CLOSE WHEN CLICKING OUTSIDE
 window.addEventListener("click", () => {
   closeAllDropdowns();
 });
-
