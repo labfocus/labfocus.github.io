@@ -40,3 +40,19 @@ gameBtn.addEventListener("click", e => {
 window.addEventListener("click", () => {
   closeAllDropdowns();
 });
+
+// Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Dropdown toggle
+    document.querySelectorAll('.dropbtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dropdown = btn.nextElementSibling;
+        dropdown.classList.toggle('show');
+      });
+    });
