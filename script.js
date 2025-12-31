@@ -37,8 +37,11 @@ const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', (e) => {
   e.stopPropagation();
   navLinks.classList.toggle('show');
+  hamburger.classList.toggle('active'); // animate X
 });
 
+// Close sidebar if clicking outside
 window.addEventListener('click', () => {
   navLinks.classList.remove('show');
+  hamburger.classList.remove('active');
 });
