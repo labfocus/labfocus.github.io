@@ -79,6 +79,10 @@ main {
   display: flex;
   align-items: center;
   gap: 25px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+  max-height: 1000px; /* default max-height for desktop */
+  opacity: 1;
 }
 
 /* LINKS */
@@ -121,11 +125,12 @@ main {
   max-height: 0;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 20;
 }
 
 .dropdown-content.show {
-  max-height: 500px;
+  max-height: 500px; /* enough for links */
   opacity: 1;
   pointer-events: auto;
 }
@@ -167,6 +172,7 @@ main {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
+  transition: filter 0.3s;
 }
 
 .cta:hover {
@@ -220,15 +226,18 @@ main {
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 100%;
     gap: 10px;
     margin-top: 10px;
+    max-height: 0; /* hide initially */
+    opacity: 0;
   }
 
   .nav-links.show {
-    display: flex;
+    max-height: 1000px;
+    opacity: 1;
   }
 
   .navbar {
@@ -245,5 +254,14 @@ main {
 
   .hero h1 {
     font-size: 1.8rem;
+  }
+
+  /* Dropdowns inside mobile menu */
+  .dropdown-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    width: 100%;
   }
 }
