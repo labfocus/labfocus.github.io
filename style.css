@@ -117,28 +117,27 @@ main { flex: 1; }
 
 .footer { text-align: center; padding: 20px 0; background: var(--nav); box-shadow: 0 -2px 10px var(--shadow); }
 
-/* ---------------------- MOBILE ---------------------- */
 @media (max-width: 768px) {
-  .hamburger { display: block; } /* show hamburger */
+  .hamburger { display: block; }
 
   .nav-links {
     position: fixed;
     top: 0;
-    left: -250px; /* hidden by default on left */
+    right: -250px;  /* hidden by default on the right */
     width: 250px;
     height: 100%;
     background: var(--nav);
     flex-direction: column;
     padding: 80px 20px;
     gap: 20px;
-    transition: left 0.3s;
-    box-shadow: 2px 0 10px var(--shadow);
+    transition: right 0.3s;  /* animate sliding */
+    box-shadow: -2px 0 10px var(--shadow);
     z-index: 90;
     align-items: flex-start;
   }
 
   .nav-links.show {
-    left: 0; /* slide in */
+    right: 0;  /* slide in from right */
   }
 
   .nav-links a, .dropbtn, .theme-btn {
@@ -159,3 +158,4 @@ main { flex: 1; }
 
   .dropdown-content a { padding-left: 30px; }
 }
+
