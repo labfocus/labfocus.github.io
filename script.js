@@ -40,8 +40,12 @@ hamburger.addEventListener('click', (e) => {
   hamburger.classList.toggle('active'); // animate X
 });
 
-// Close sidebar if clicking outside
-window.addEventListener('click', () => {
-  navLinks.classList.remove('show');
-  hamburger.classList.remove('active');
+// Close sidebar only when clicking outside of sidebar
+window.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && e.target !== hamburger) {
+    navLinks.classList.remove('show');
+    hamburger.classList.remove('active');
+  }
 });
+
+
