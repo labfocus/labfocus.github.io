@@ -42,3 +42,4 @@ hamburger.addEventListener('click', (e) => {
 window.addEventListener('click', () => {
   navLinks.classList.remove('show');
 });
+
