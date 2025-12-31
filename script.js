@@ -8,20 +8,29 @@ hamburger.addEventListener('click', () => {
 
 // Theme toggle
 const themeBtn = document.getElementById("theme-toggle");
+const themeBtnSidebar = document.getElementById("theme-toggle-sidebar");
 const body = document.body;
+
+function setThemeBtn(btn) {
+  btn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+}
 
 if (localStorage.getItem("theme") === "dark") {
   body.classList.add("dark");
-  themeBtn.textContent = "☀️";
+  setThemeBtn(themeBtn);
+  setThemeBtn(themeBtnSidebar);
 }
 
-themeBtn.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
-  themeBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+[themeBtn, themeBtnSidebar].forEach(btn => {
+  btn.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
+    setThemeBtn(themeBtn);
+    setThemeBtn(themeBtnSidebar);
+  });
 });
 
-// Dropdowns inside sidebar
+// Dropdown toggle
 document.querySelectorAll('.dropbtn').forEach(btn => {
   btn.addEventListener('click', () => {
     const dropdown = btn.nextElementSibling;
