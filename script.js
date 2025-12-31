@@ -1,8 +1,8 @@
-// 🌙 Theme Toggle
+// Theme Toggle
 const themeBtn = document.getElementById("theme-toggle");
 const body = document.body;
 
-if (localStorage.getItem("theme") === "dark") {
+if(localStorage.getItem("theme") === "dark"){
   body.classList.add("dark");
   themeBtn.textContent = "☀️";
 }
@@ -20,9 +20,9 @@ const taskDropdown = document.getElementById("taskDropdown");
 const gameBtn = document.getElementById("gameBtn");
 const gameDropdown = document.getElementById("gameDropdown");
 
-function closeAllDropdowns(except = null) {
-  if (except !== taskDropdown) taskDropdown.classList.remove("show");
-  if (except !== gameDropdown) gameDropdown.classList.remove("show");
+function closeAllDropdowns(except = null){
+  if(except !== taskDropdown) taskDropdown.classList.remove("show");
+  if(except !== gameDropdown) gameDropdown.classList.remove("show");
 }
 
 taskBtn.addEventListener("click", e => {
@@ -41,23 +41,10 @@ window.addEventListener("click", () => {
   closeAllDropdowns();
 });
 
+// Hamburger toggle
 const hamburger = document.getElementById('hamburger-btn');
 const navLinks = document.getElementById('nav-links');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('show');
-});
-
-// Dropdown toggle
-document.querySelectorAll('.dropbtn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const dropdown = btn.nextElementSibling;
-
-    // Close other dropdowns
-    document.querySelectorAll('.dropdown-content').forEach(dc => {
-      if (dc !== dropdown) dc.classList.remove('show');
-    });
-
-    dropdown.classList.toggle('show');
-  });
 });
