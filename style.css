@@ -151,28 +151,29 @@ main { flex: 1; }
 
 .footer { text-align: center; padding: 20px 0; background: var(--nav); box-shadow: 0 -2px 10px var(--shadow); }
 
-/* ---------------------- MOBILE ---------------------- */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
 
   .nav-links {
     position: fixed;
     top: 0;
-    right: -250px;  /* hidden by default on the right */
+    right: -250px;
     width: 250px;
     height: 100%;
     background: var(--nav);
     flex-direction: column;
     padding: 80px 20px;
     gap: 20px;
-    transition: right 0.3s;  /* animate sliding */
+    transition: right 0.3s;
     box-shadow: -2px 0 10px var(--shadow);
     z-index: 100;
     align-items: flex-start;
+
+    overflow-y: auto; /* <-- allow scrolling */
   }
 
   .nav-links.show {
-    right: 0;  /* slide in from right */
+    right: 0;
   }
 
   .nav-links a, .dropbtn, .theme-btn {
@@ -189,7 +190,14 @@ main { flex: 1; }
     left: 0;
     box-shadow: none;
     width: 100%;
+    
+    border: 1px solid var(--shadow); /* <-- add outline/border */
+    border-radius: 8px;
+    margin-bottom: 10px; /* spacing between dropdown and other links */
   }
 
-  .dropdown-content a { padding-left: 30px; }
+  .dropdown-content a {
+    padding-left: 20px;
+  }
 }
+
