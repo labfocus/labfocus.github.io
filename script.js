@@ -1,39 +1,44 @@
-// Sidebar toggle
-const hamburger = document.getElementById('hamburger-btn');
-const sidebar = document.getElementById('sidebar');
-
-hamburger.addEventListener('click', () => {
-  sidebar.classList.toggle('show');
-});
-
 // Theme toggle
 const themeBtn = document.getElementById("theme-toggle");
-const themeBtnSidebar = document.getElementById("theme-toggle-sidebar");
 const body = document.body;
-
-function setThemeBtn(btn) {
-  btn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
-}
 
 if (localStorage.getItem("theme") === "dark") {
   body.classList.add("dark");
-  setThemeBtn(themeBtn);
-  setThemeBtn(themeBtnSidebar);
+  themeBtn.textContent = "☀️";
 }
 
-[themeBtn, themeBtnSidebar].forEach(btn => {
-  btn.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
-    setThemeBtn(themeBtn);
-    setThemeBtn(themeBtnSidebar);
+themeBtn.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  const theme = body.classList.contains("dark") ? "dark" : "light";
+  localStorage.setItem("theme", theme);
+  themeBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
+// Dropdowns
+document.querySelectorAll('.dropbtn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dropdown = btn.nextElementSibling;
+    document.querySelectorAll('.dropdown-content').forEach(dc => {
+      if (dc !== dropdown) dc.classList.remove('show');
+    });
+    dropdown.classList.toggle('show');
   });
 });
 
-// Dropdown toggle
-document.querySelectorAll('.dropbtn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const dropdown = btn.nextElementSibling;
-    dropdown.classList.toggle('show');
-  });
+window.addEventListener('click', () => {
+  document.querySelectorAll('.dropdown-content').forEach(dc => dc.classList.remove('show'));
+});
+
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger-btn');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navLinks.classList.toggle('show');
+});
+
+window.addEventListener('click', () => {
+  navLinks.classList.remove('show');
 });
